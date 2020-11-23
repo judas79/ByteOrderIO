@@ -83,4 +83,3 @@ namespace ByteOrderIO
 
 
 
-/************************************* NO highlights from comments area *********************************/
