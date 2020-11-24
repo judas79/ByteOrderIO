@@ -1,4 +1,14 @@
-﻿using System;
+﻿/*
+In the previous lesson we mad a public abstract class and renamed it to BaseIO, then created an enumerator to hold our Big and Little Endians, then created a
+protected variable to hold whichever data, from the Big or Little Endian, depending on which 0ne we are using then we will be worked on the reader class, of this 
+reader/ writer, then added our system IO namespace to out ByteIO.cs.  We will also added our summary, which we should have done, in the previous lesson, as all of
+our constructors will have in this project.  In this lesson we will continue in our reader class, by adding different data types of integers, to read.  We will
+start by reading a byte, even though, we need not make anything to read a byte, we will do this, and then create a summary, saying what this does.  This will read
+a byte, then advance by one to read the byte after it.
+*/
+
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -27,6 +37,7 @@ namespace ByteOrderIO
             // L187 set the Byteorder to BigEndian, using Reader class BaseIO
             this.Byteorder = byteorder.BigEndian;
         }
+
         /// <summary>
         /// Create a reader, to read a file
         /// </summary>
@@ -56,23 +67,43 @@ namespace ByteOrderIO
         }
 
         /// <summary>
-        /// Read byte, return Position, advance one, to next byte
+        /// Read byte, return byte Position, advance one, to next byte
         /// </summary>
         /// <returns></returns>
-        // L188 read data type, byte, advance one , then go to the following byte, and return Position
+        // L188 read data type, byte, one , then go to the following byte, and return Position
         public byte ReadByte()
         {
             return br.ReadByte();
         }
-        /// <summary>
+
+
+/*
+Next we will read a signed byte, return the signed byte Position, and then advance one, to the next byte.
+*/
+
+
+		/// <summary>
         /// Read signed byte, return its Position, advance one, to next byte
         /// </summary>
         /// <returns></returns>
-        // L188 read data type, signed byte, advance one , then go to the following signed byte, and return Position
+        // L188 read data type, byte, one , then go to the following byte, and return Position
         public sbyte ReadSByte()
         {
             return (sbyte)br.ReadByte();
         }
+
+
+
+
+/*
+Next we will read a short integer, which is the same as an int16, and assign it to a short var 'myShort'.   Then we will create a statement to check if the
+short being checked is a BigEndian or not.  If it is a BigEndian is chosrn to be the byteorder, we will want to convert the byte order to bigEndian.  So, we
+will create an if statement to se if the chosen byteorder is Big endian.  
+We will then put myShort in a byte array, after converting it, with bitConverer.  Then we will Reverse the order of the bytes in the array.  Then we will use
+bitConverter to put the reversed bytes back into myShort, after getting the bytes, starting at 0, in the array buffer.  Then we will return the myShort Big
+Endian.
+*/
+
 
         /// <summary>
         /// Read short (int16) byte, return its Position, advance one byte, to next short
@@ -98,7 +129,21 @@ namespace ByteOrderIO
             return myShort;
         }
 
-        /// <summary>
+
+
+
+/*
+Next we will do th same thing for all the other integer byte data types.  This includes all these types of integers:
+ushort
+int
+uint
+long 
+ulong
+*/
+
+
+
+/// <summary>
         /// Read ushort (UInt16) byte, return its Position, advance one byte, to next ushort
         /// </summary>
         /// <returns></returns>
@@ -237,3 +282,12 @@ namespace ByteOrderIO
         protected byteorder Byteorder;
     }
 }
+
+
+
+
+
+
+
+
+/*********************************** NO highlights from the comments area *********************************/
