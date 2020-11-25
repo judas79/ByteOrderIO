@@ -1,4 +1,14 @@
-﻿using System;
+﻿/*
+In the previous lesson we mad a public abstract class and renamed it to BaseIO, then created an enumerator to hold our Big and Little Endians, then created a
+protected variable to hold whichever data, from the Big or Little Endian, depending on which 0ne we are using then we will be worked on the reader class, of this 
+reader/ writer, then added our system IO namespace to out ByteIO.cs.  We will also added our summary, which we should have done, in the previous lesson, as all of
+our constructors will have in this project.  After that we, continued in our reader class, by adding different data types of integer bytes, to read and a method 
+to bytes, even though bytes are read in bigendian, not to be confused with byte.  Then we wrote a method to close our reader, and another to reverse the byte order
+of whatever the user has loaded, to either big or little endian.  
+*/
+
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -251,19 +261,40 @@ namespace ByteOrderIO
             this.Byteorder = bo;
         }
 
-        /// <summary>
-        /// pass thru user defined length, return chars as a string
-        /// </summary>
-        /// <param name="iLength"></param>
-        /// <returns></returns>
-        // L190 read bytes in string by its length
+        
+
+
+/*
+In this lesson we will read the amount of bytes, determined by the length of a string, to read the string.  We will use the ReadChars method and not the ReadString,
+because the ReadString method does not allow the reading of the string using the Lenght property.  Then we will cast the chars a a new string.
+*/
+
+
+
+
+		// L190 read bytes in string by its length
         public string ReadString(int iLength)
         {
             // L190 read the chars in the string
             return new string(br.ReadChars(iLength));
         }
 
-        /// <summary>
+
+
+/*
+The next method will read a unicode string.  A unicode string is made up of a two byte integer (int16).  Unicode is neccessary for representing languages that
+use more the one byte for a character.  For example Japaneese, uses two byte to represent one character in the spelling of some words.  If you looked at a word
+such as Adam, in unicode, it will have a '.' dot, which represent 00 in hex, before each character (.A.d.a.m); 00 41 00 61 00 64 00 6D hex.  In big Endian, the 
+chars are stored, like our example.  If unicode is stored in little endian the bytes would be read from right to left and stored that way.  Adam A.d.a.m. and in
+hex 41 00 61 00 64 00 6D 00 hex.
+Back to our method, we will want to read our unicode string, using the user requested length of our string, to do so.  To read the unicode string in bytes, the
+user would have to enter '8' to read (.A.d.a.m), as an example.  We will determine what type of unicode string to read it as, determined by the unicode type, in
+an if statement.  Little endian is refered to as 'unicode' when Encoding, which is its default encoding, big endian is refered to as BigEndianUnicode, when Encoding
+unicode.  So we will read the user requested bytes, in bytes of two, and encode those bytes to big or little endian. 
+*/
+
+
+		/// <summary>
         /// user requested length of bytes to read as string, then encode as big endian or little endian (unicode is in little endian)
         /// </summary>
         /// <param name="iLength"></param>
@@ -299,3 +330,12 @@ namespace ByteOrderIO
         protected byteorder Byteorder;
     }
 }
+
+
+
+
+
+
+
+
+/************************************* NO highlights from the comments area**************************************/
