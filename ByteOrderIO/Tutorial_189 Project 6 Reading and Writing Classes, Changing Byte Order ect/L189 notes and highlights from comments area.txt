@@ -1,4 +1,14 @@
-﻿using System;
+﻿/*
+In the previous lesson we mad a public abstract class and renamed it to BaseIO, then created an enumerator to hold our Big and Little Endians, then created a
+protected variable to hold whichever data, from the Big or Little Endian, depending on which 0ne we are using then we will be worked on the reader class, of this 
+reader/ writer, then added our system IO namespace to out ByteIO.cs.  We will also added our summary, which we should have done, in the previous lesson, as all of
+our constructors will have in this project.  After that we, continued in our reader class, by adding different data types of integer bytes, to read. In this lesson
+we will add another method for bytes, not to be confused with byte.  
+*/
+
+
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -218,8 +228,18 @@ namespace ByteOrderIO
             return myUlong;
         }
 
+
+
+
+/*
+First, the user will pass in the 'amount' of bytes to read.  'Bytes' are read in Big Endian by default, so we will only want to convert them if they happen to be 
+in Little Endian. So we will write an arguement to check if it is in LittleEndian and convert it to BigEndian.  Then we will write a  summary for the users, for 
+the ReadBytes method.
+*/
+
+
         /// <summary>
-        /// Read user specified bytes, return bytes array Position, advance one byte, to next bytes
+        /// Read user specified bytes, return its Position, advance one byte, to next bytes
         /// </summary>
         /// <returns></returns>
         // L189 read data type, byte[], read amount passed tru by user , then go to the following bytes, and return the Position
@@ -229,10 +249,21 @@ namespace ByteOrderIO
             byte[] buffer = br.ReadBytes(amount);
             if (Byteorder == byteorder.LittleEndian)
             {
-                Array.Reverse(buffer);
+                Array.Reverse(buffer);                
             }
             return buffer;
         }
+    }
+
+
+
+/*
+Next we will create a close reader method, so the user can close the reader anduse something else, within the program. 
+Next we will create a method to change the byteorder.  If the byte is a littleEndian it can be changed to a BigEndian and visa versa.  This will be decided by
+what the user passes thru.
+*/
+
+
 
         // L189 close the reader method
         public void closeReader()
@@ -240,7 +271,7 @@ namespace ByteOrderIO
             br.Close();
         }
 
-        /// <summary>
+		 /// <summary>
         /// User chooses the byteorder, BigEndian or LittleEndian
         /// </summary>
         /// <param name="bo"></param>
@@ -270,3 +301,11 @@ namespace ByteOrderIO
         protected byteorder Byteorder;
     }
 }
+
+
+
+
+
+
+
+/************************************** NO highlights from the comments area ***********************************/
