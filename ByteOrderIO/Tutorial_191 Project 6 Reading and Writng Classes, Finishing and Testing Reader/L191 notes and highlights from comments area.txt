@@ -1,11 +1,24 @@
-﻿using System;
+﻿/*
+In the previous lesson we mad a public abstract class and renamed it to BaseIO, then created an enumerator to hold our Big and Little Endians, then created a
+protected variable to hold whichever data, from the Big or Little Endian, depending on which 0ne we are using then we will be worked on the reader class, of this 
+reader/ writer, then added our system IO namespace to out ByteIO.cs.  We will also added our summary, which we should have done, in the previous lesson, as all of
+our constructors will have in this project.  After that we, continued in our reader class, by adding different data types of integer bytes, to read and a method 
+to bytes, even though bytes are read in bigendian, not to be confused with byte.  Then we wrote a method to close our reader, and another to reverse the byte order
+of whatever the user has loaded, to either big or little endian, then we read the bytes in a string determined by the user requested length.string.  We then read 
+unicode, as bytes and used the encoder to render it as big endian, or unicode, which is the same as little endian.
+In this lesson we will continue, with read a char and chars as bytes.
+*/
+
+
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 
-namespace ByteOrderInOut
+namespace ByteOrderIO
 {
     /// <summary>
     /// The position to read at
@@ -274,20 +287,36 @@ namespace ByteOrderInOut
             // L190 if it is a bigendian get the bytes as a string and use encoding to return it as bigendian
             if (Byteorder == byteorder.BigEndian)
                 return Encoding.BigEndianUnicode.GetString(br.ReadBytes(iLength));
-            else
+            else 
                 // L190 return it in littleEnding unicode, which is unicode, default name and structure, for little endian
-                return Encoding.Unicode.GetString(br.ReadBytes(iLength));
+                return Encoding.Unicode.GetString(br.ReadBytes(iLength));        
         }
 
-        /// <summary>
-        /// read char at current position, advance one
+
+
+/*
+First we will read a byte from a char, then return the byte.  A single char, byte order, is not likely to ever be, in a little endian, do to the nature of it
+being a single character.
+*/
+
+
+		/// <summary>
+        /// read char byte at current position, advance one
         /// </summary>
-        /// <returns></returns
+        /// <returns></returns>
         // L191 read char byte at its current position
-        public char ReadCharacter()
+        public char ReadChar()
         {
             return br.ReadChar();
         }
+
+
+
+/*
+Next, we will read chars, which will be an array, and return the amount of chars requested byt the user.  Character, are also seldomly written backward, in 
+little endian, because of the nature in which they are used and read.
+*/
+
 
         /// <summary>
         /// read chars in an array, using Amount requested by user
@@ -299,7 +328,7 @@ namespace ByteOrderInOut
         {
             return br.ReadChars(iAmount);
         }
-    }
+	}
 
     // L186 rename class
     //class ByteIO
@@ -319,3 +348,15 @@ namespace ByteOrderInOut
         protected byteorder Byteorder;
     }
 }
+
+
+
+/*
+Now, that we have completed our reader class, we will add a button to form1, to test that this all works.  First add in the namespace, at the top of form1,
+of this class, we have partialy completed.
+
+using ByteOrderInOut;
+
+Double click our button1 in form1 to go to its code area.  There we will create a method to open a file, and then, verify that the user has opened a file, to test
+a file on our reader.
+*/
