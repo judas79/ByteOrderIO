@@ -81,7 +81,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Tutorial_186 Project 6 Reading and Writing Class, Making Base Class\L186 form1CS.txt" />
+    <Content Include="Tutorial_186 Project 6 Reading and Writing Class, Making Base Class\L186 ByteIOCS.txt" />
     <Content Include="Tutorial_186 Project 6 Reading and Writing Class, Making Base Class\L186 notes and highlights from comments area.txt" />
     <Content Include="Tutorial_187 Project 6 Reading and Writing Classes, Begining Reading Class\L187 notes and highlights from comments area.txt" />
     <Content Include="Tutorial_187 Project 6 Reading and Writing Classes, Begining Reading Class\L187 ByteIOCS.txt" />
