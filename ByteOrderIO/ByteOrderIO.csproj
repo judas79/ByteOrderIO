@@ -94,6 +94,9 @@
     <Content Include="Tutorial_191 Project 6 Reading and Writng Classes, Finishing and Testing Reader\L191 notes and highlights from comments area.txt" />
     <Content Include="Tutorial_191 Project 6 Reading and Writng Classes, Finishing and Testing Reader\L191 form1CS.txt" />
     <Content Include="Tutorial_191 Project 6 Reading and Writng Classes, Finishing and Testing Reader\L191 ByteIOCS.txt" />
+    <Content Include="Tutorial_192 Project 6 Reading and Writing Classes, Begin Writing Class\L192 notes and highlights from comments area.txt" />
+    <Content Include="Tutorial_192 Project 6 Reading and Writing Classes, Begin Writing Class\L192 BytesIOCS.txt" />
+    <Content Include="Tutorial_192 Project 6 Reading and Writing Classes, Begin Writing Class\L192 form1CS.txt" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
