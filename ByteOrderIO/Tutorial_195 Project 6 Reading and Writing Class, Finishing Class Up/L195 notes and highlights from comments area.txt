@@ -1,4 +1,23 @@
-﻿using System;
+﻿/*
+In the previous lesson we mad a public abstract class and renamed it to BaseIO, then created an enumerator to hold our Big and Little Endians, then created a
+protected variable to hold whichever data, from the Big or Little Endian, depending on which 0ne we are using then we will be worked on the reader class, of this 
+reader/ writer, then added our system IO namespace to out ByteIO.cs.  We will also added our summary, which we should have done, in the previous lesson, as all of
+our constructors will have in this project.  After that we, continued in our reader class, by adding different data types of integer bytes, to read and a method 
+to bytes, even though bytes are read in bigendian, not to be confused with byte.  Then we wrote a method to close our reader, and another to reverse the byte order
+of whatever the user has loaded, to either big or little endian, then we read the bytes in a string determined by the user requested length.string.  We then read 
+unicode, as bytes and used the encoder to render it as big endian, or unicode, which is the same as little endian, then continued to create a read a char and chars 
+as bytes, methods.  We then added a button1 to our form1 [design], to test our finished reader.  Button1, has a open dialog file method, and a test, to read an int32
+byte.
+Next, we started our byteorder writer, in our BytesIO.cs file under our Reader class.  We creates the write class and have two constructers, simillar to the read class 
+and constructors, then we created the methods to write a byte, bytes, and all the other different integer file types, to big endian, when big endian is requested.
+Then we will wrote a method for writing a string and another to write unicode, in little or big endian.  
+In this lesson, we will write methods, for a character, for characters, and a method to close the writer.  We will also move the byte order, converter method, from 
+the reader writer to our parent class 'BaseIO', so both the reader and writer have access to it, since there is nod difference for the codeing needed, to use it in
+either of those classes.
+*/ 
+
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -238,6 +257,17 @@ namespace ByteOrderInOut
         public void closeReader()
         {
             br.Close();
+        }
+
+        /// <summary>
+        /// User chooses the byteorder, BigEndian or LittleEndian
+        /// </summary>
+        /// <param name="bo"></param>
+        // L189 chang byte order from big to little endian or visa versa, 
+        public void changeByteOrder(byteorder bo)
+        {
+            // L189 in this class not the BaseIO class
+            this.Byteorder = bo;
         }
 
         /// <summary>
@@ -496,6 +526,16 @@ namespace ByteOrderInOut
             bw.Write(buffer);
         }
 
+
+
+/*
+First, we will write the methods to write a character, or another method to write characters, for our write class.  Since character(s), are always written
+in big endian (left to right) we do not need to convert anything, which will make these simple.  We will pass thru our char(s) from the user though, and leave
+a summary comment, of what each method does..
+*/
+
+
+
         /// <summary>
         /// Write a single character alway in big endian
         /// </summary>
@@ -516,6 +556,13 @@ namespace ByteOrderInOut
             bw.Write(toWrite);
         }
 
+
+
+/*
+Next we will write a method to close our writer.
+*/
+
+
         /// <summary>
         /// Close binary writer
         /// </summary>
@@ -524,8 +571,19 @@ namespace ByteOrderInOut
         {
             bw.Close();
         }
-    }
-        // L186 rename class
+
+
+
+/*
+Last, we will go back into our reader class, and copy paste, our byte order method, into the parent class, 'BaseIO', so both of its children classes, Read and 
+Write, will have access to the method.  This method is not, any type of interger byte, so it doesn't really belong in the byte reader or byte writer.  The code, 
+for the byte order is exactly the same, and is exclusivley used for the order of the bytes only, so can be shared by both classes and therfore belongs in the 
+BaseIO class.
+*/
+
+
+
+       // L186 rename class
         //class ByteIO
         public abstract class BaseIO
     {
@@ -543,7 +601,7 @@ namespace ByteOrderInOut
         /// User chooses the byteorder, BigEndian or LittleEndian
         /// </summary>
         /// <param name="bo"></param>
-        // L189 chang byte order from big to little endian or visa versa, L195 moved here from reader class
+        // L189 change byte order from big to little endian or visa versa, L195 moved here from reader class
         public void changeByteOrder(byteorder bo)
         {
             // L189 in this class not the BaseIO class
@@ -555,3 +613,10 @@ namespace ByteOrderInOut
         protected byteorder Byteorder;
     }
 }
+
+
+
+
+
+
+/************************************** NO highlights from the comments area ***********************************/
